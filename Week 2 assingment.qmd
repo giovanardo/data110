@@ -1,0 +1,49 @@
+---
+title: "WEEK2 - ASSIGNMENT"
+author: "G OLIVEIRA"
+format: html
+editor: visual
+---
+
+### **Exercises**
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+data(mpg)
+```
+
+1.  What happens if you facet on a continuous variable?
+
+```{r}
+ggplot(mpg, aes (x = hwy, y = displ)) + geom_point(fill = "pink", shape = 24)
+```
+
+2.  Why did the following code not result in a plot with blue points?
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = "blue"))
+```
+
+A: the color does not work because when putting inside aes, the comand works like a legend to the graph
+
+3.  What does the `stroke` aesthetic do? What shapes does it work with? (Hint: use [`?geom_point`](https://ggplot2.tidyverse.org/reference/geom_point.html))
+
+```{r}
+? geom_point
+```
+
+A: "The stroke aesthetic to modify the width of the border"
+
+4.  What happens if you map an aesthetic to something other than a variable name, like `aes(color = displ < 5)`? Note, you’ll also need to specify x and y.
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = displ < 5))
+```
+
+A: it divides in two categories the variable displ: True for \< 5 and False for \> 5. and it displays in two separated colors.
